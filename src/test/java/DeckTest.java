@@ -15,12 +15,12 @@ public class DeckTest {
     @Test
     public void checkDeckHas52Cards(){
         assertEquals(52, deck.getCardArrayLength());
-        assertEquals(true, deck.dealFirstCard() instanceof Card);
+        assertEquals(true, deck.dealOneCard() instanceof Card);
     }
 
     @Test
     public void afterCardHasBeenDealtDeckHasOneLessCard(){
-        deck.dealFirstCard();
+        deck.dealOneCard();
         assertEquals(51, deck.getCardArrayLength());
     }
 

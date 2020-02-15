@@ -20,11 +20,8 @@ public class Deck {
         return cards;
     }
 
-    public Card dealFirstCard() {
-        Card cardDealt = this.cards.get(0);
-        this.cards.remove(0);
-
-        return cardDealt;
+    public Card dealOneCard() {
+        return this.cards.remove(0);
     }
 
     public int getCardArrayLength() {

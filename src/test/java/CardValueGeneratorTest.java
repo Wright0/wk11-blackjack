@@ -14,7 +14,6 @@ public class CardValueGeneratorTest {
         ace = new Card(Suit.SPADES, Rank.ACE);
         queen = new Card(Suit.HEARTS, Rank.QUEEN);
         seven = new Card(Suit.SPADES, Rank.SEVEN);
-
     }
 
     @Test
