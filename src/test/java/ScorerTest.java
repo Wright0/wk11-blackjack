@@ -5,21 +5,34 @@ import static org.junit.Assert.assertEquals;
 
 public class ScorerTest {
 
-    private Card two;
-    private Card three;
+    private Card ace;
+    private Card queen;
     private Player olivia;
 
     @Before
     public void before(){
-        two = new Card(Suit.SPADES, Rank.TWO);
-        three = new Card(Suit.HEARTS, Rank.THREE);
+        ace = new Card(Suit.HEARTS, Rank.ACE);
+        queen = new Card(Suit.HEARTS, Rank.QUEEN);
         olivia = new Player("Olivia");
     }
 
     @Test
     public void canScoreHandCorrectly(){
-        olivia.receiveCard(two);
-        olivia.receiveCard(three);
-        assertEquals(5, Scorer.scoreHand(olivia.getHand()));
+        olivia.receiveCard(ace);
+        olivia.receiveCard(queen);
+        assertEquals(21, Scorer.scoreHand(olivia.getHand()));
+    }
+
+    @Test
+    public void canReturnTrueIf21(){
+        olivia.receiveCard(ace);
+        olivia.receiveCard(queen);
+        assertEquals(true, Scorer.checkIfBlackJack(olivia));
+    }
+
+    @Test
+    public void canReturnFalseIfNot21(){
+        olivia.receiveCard(ace);
+        assertEquals(false, Scorer.checkIfBlackJack(olivia));
     }
 }

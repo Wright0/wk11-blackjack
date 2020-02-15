@@ -23,11 +23,12 @@ public class PlayerTest {
         assertEquals("Olivia", player2.getName());
     }
 
-    //Instance of no longer works. Can't use custom types and need an ArrayList<Card>.
-    //Need to think of a new way to test this.
-//    @Test
-//    public void hasReceivedHand(){
-//        player1.receiveCard(deck.dealOneCard());
-//        assertEquals(true, player1.getHand() instanceof ArrayList<Card>);
-//    }
+    @Test
+    public void hasReceivedHand(){
+        player1.receiveCard(deck.dealOneCard());
+        assertEquals(1, player1.getHand().size());
+    }
+
+    //instanceof no longer works here because you can't use custom types for the comparison
+    // other ways to check the data type that
 }

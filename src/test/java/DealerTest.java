@@ -8,10 +8,12 @@ public class DealerTest {
     Player player;
     Dealer dealer;
     Card card;
+    Card card2;
 
     @Before
     public void before(){
         card = new Card(Suit.HEARTS, Rank.ACE);
+        card2 = new Card(Suit.HEARTS, Rank.TWO);
         player = new Player("Olivia");
         dealer = new Dealer("Dealer");
     }
@@ -38,5 +40,12 @@ public class DealerTest {
     public void willReturnTrueIfScoreUnder16(){
         dealer.receiveCard(card);
         assertEquals(true, dealer.canDealerPlay());
+    }
+
+    @Test
+    public void canReturnDealersFirstCard(){
+        dealer.receiveCard(card);
+        dealer.receiveCard(card2);
+        assertEquals(card, dealer.showFirstCardInHand());
     }
 }

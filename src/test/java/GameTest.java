@@ -49,6 +49,4 @@ public class GameTest {
         assertEquals(3, olivia.getHand().size());
     }
 
-
-
 }

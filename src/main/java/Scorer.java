@@ -9,4 +9,8 @@ public class Scorer {
         }
         return score;
     }
+
+    public static boolean checkIfBlackJack(Player player) {
+        return Scorer.scoreHand(player.getHand()) == 21;
+    }
 }

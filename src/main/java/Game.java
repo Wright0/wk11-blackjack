@@ -32,23 +32,17 @@ public class Game {
         }
     }
 
-
     public void playerTwists(Player player){
         Card card = deck.dealOneCard();
         player.receiveCard(card);
     }
 
+
+
 //    public Player returnWinner(){
-//
-//    }
-
-
-//    public Card getDealersFirstCard(dealer?){
-//        dealer.getFirstCard();
-//    }
-
-//    public boolean isGameDraw(){
 //        if
 //
 //    }
+
+
 }
