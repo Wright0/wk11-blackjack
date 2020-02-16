@@ -27,4 +27,8 @@ public class CardTest {
         assertEquals(false, card.isFaceCard());
     }
 
+    @Test
+    public void canReturnCardName(){
+        assertEquals("ACE of SPADES", card.getCardName());
+    }
 }

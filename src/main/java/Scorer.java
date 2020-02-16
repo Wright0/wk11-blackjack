@@ -1,16 +1,11 @@
-import java.util.ArrayList;
-
 public class Scorer {
 
-    public static int scoreHand(ArrayList<Card> hand){
+    public static int scoreHand(Player player){
         int score = 0;
-        for (Card card : hand){
+        for (Card card : player.getHand()){
             score += CardValueGenerator.getCardScore(card);
         }
         return score;
     }
 
-    public static boolean checkIfBlackJack(Player player) {
-        return Scorer.scoreHand(player.getHand()) == 21;
-    }
 }

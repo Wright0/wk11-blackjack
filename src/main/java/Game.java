@@ -1,14 +1,16 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Game {
 
     private ArrayList<Player> players;
     private Deck deck;
+    private Dealer dealer;
 
     public Game(Deck deck){
         this.players = new ArrayList<Player>();
         this.deck = deck;
+        this.dealer = new Dealer("Bob");
+        this.deck.shuffleDeck();
     }
     
     public int getPlayerCount(){
@@ -19,30 +21,72 @@ public class Game {
         this.players.add(player);
     }
 
-    public ArrayList<Player> getPlayers(){
-        return this.players;
+    public Player getPlayer(int index){
+        return this.players.get(index);
     }
 
-    public void dealToStartGame(int numberOfCardsToDeal){
+    public Dealer getDealer(){
+        return this.dealer;
+    }
+
+    private Card dealCard(Player player){
+        Card card = this.deck.dealOneCard();
+        player.receiveCard(card);
+        return card;
+    }
+
+    public void startGame(){
         for (Player player : this.players){
-            for (int i = 0; i < numberOfCardsToDeal; i++) {
-                Card card = deck.dealOneCard();
-                player.receiveCard(card);
+            for (int i = 0; i < 2; i++) {
+                this.dealCard(player);
             }
+        }
+        for (int i = 0; i < 2; i++) {
+            this.dealCard(this.dealer);
         }
     }
 
-    public void playerTwists(Player player){
-        Card card = deck.dealOneCard();
-        player.receiveCard(card);
+    public Card playerTwists(Player player){
+        return dealCard(player);
     }
 
+    public void dealerMoves(){
+        if (dealer.canDealerPlay()){
+            playerTwists(this.dealer);
+        }
+    }
 
+    public boolean isBlackJack(Player player) {
+        return Scorer.scoreHand(player) == 21;
+    }
 
-//    public Player returnWinner(){
-//        if
-//
-//    }
+    public boolean isplayerBust(Player player){
+        return Scorer.scoreHand(player) > 21;
+    }
+
+    public boolean isDraw(Player player) {
+        return Scorer.scoreHand(player) == Scorer.scoreHand(this.dealer);
+    }
+
+    public Player returnWinner(){
+        Player winner = null;
+        int highScore = 0;
+        int dealerScore = Scorer.scoreHand(dealer);
+
+        for (Player player : this.players){
+            int playerScore = Scorer.scoreHand(player);
+            if (playerScore > highScore && playerScore < 22){
+                winner = player;
+                highScore = playerScore;
+            }
+        }
+
+        if (dealerScore > highScore && dealerScore < 22){
+            winner = this.dealer;
+            highScore = dealerScore;
+        }
+        return winner;
+    }
 
 
 }

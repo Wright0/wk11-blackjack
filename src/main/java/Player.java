@@ -18,9 +18,13 @@ public class Player {
         this.hand.add(card);
     }
 
-    //BAD! This array could be mutated. Rethink this.
     public ArrayList<Card> getHand() {
-        return this.hand;
+        ArrayList<Card> copyOfHand = new ArrayList<Card>(this.hand);
+        return copyOfHand;
+    }
+
+    public int getHandSize(){
+        return this.hand.size();
     }
 
 }

@@ -5,7 +5,7 @@ public class Dealer extends Player {
     }
 
     public boolean canDealerPlay(){
-        return Scorer.scoreHand(this.getHand()) < 16;
+        return Scorer.scoreHand(this) < 16;
     }
 
     public Card showFirstCardInHand(){

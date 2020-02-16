@@ -19,4 +19,8 @@ public class Card {
     public boolean isFaceCard() {
         return this.rank.getIsFaceCard();
     }
+
+    public String getCardName(){
+        return String.format("%s of %s", this.rank, this.suit);
+            }
 }
