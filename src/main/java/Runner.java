@@ -9,8 +9,9 @@ public class Runner {
         Deck deck = new Deck();
         Game game = new Game(deck);
         int playerCount = 0;
+        Dealer dealer = game.getDealer();
 
-        System.out.println(String.format("Hi! I'm %s the dealer. Let's play BlackJack!", game.getDealer().getName() ));
+        System.out.println(String.format("Hi! I'm %s the dealer. Let's play BlackJack!", dealer.getName() ));
         System.out.println("First, how many people are playing today?");
 
         String input = scanner.next();
@@ -27,7 +28,7 @@ public class Runner {
 
         game.startGame();
 
-        System.out.println(String.format("My first card is a: %s.", game.getDealer().showFirstCardInHand().getCardName()));
+        System.out.println(String.format("My first card is a: %s.", dealer.showFirstCardInHand().getCardName()));
 
         for (int i = 0; i < playerCount; i++){
             Player activePlayer = game.getPlayer(i);
@@ -69,19 +70,27 @@ public class Runner {
 
         System.out.println("Time to reveal the winner! Here are my cards:");
 
-        for (int i = 0; i < game.getDealer().getHandSize(); i++){
-            System.out.println(String.format("%s.", game.getDealer().getHand().get(i).getCardName()));
+        for (int i = 0; i < dealer.getHandSize(); i++){
+            System.out.println(String.format("%s.", dealer.getHand().get(i).getCardName()));
         }
 
-        System.out.println("Which means...");
+        System.out.println("Which means the final scores are...");
 
-//       if (game.isDraw()){
-//           System.out.println(String.format("It's a draw! We both have %d points.", Scorer.scoreHand(player)));
-//       }
+        for (int i = 0; i < game.getPlayerCount(); i++){
+            Player activePlayer = game.getPlayer(i);
 
+            if (game.getPlayer(i).getPlayerBustStatus()){
+                System.out.println(String.format("%s went bust!", game.getPlayer(i)));
+            } else {
+                System.out.println(String.format("%s has %d points.", activePlayer.getName(), Scorer.scoreHand(activePlayer)));
+            }
+        }
+        if (dealer.getPlayerBustStatus()){
+            System.out.println("I went Bust!");
+        } else {
+            System.out.println(String.format("I have %d points", Scorer.scoreHand(dealer)));
+        }
 
-
-
-
+        System.out.println(String.format("The winner is %s! Thanks for playing!", game.returnWinner().getName()));
     }
 }

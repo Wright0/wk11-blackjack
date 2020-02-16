@@ -29,6 +29,4 @@ public class PlayerTest {
         assertEquals(1, player1.getHand().size());
     }
 
-    //instanceof no longer works here because you can't use custom types for the comparison
-    // other ways to check the data type that
 }
