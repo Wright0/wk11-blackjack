@@ -60,9 +60,6 @@ public class Game {
         return Scorer.scoreHand(player) == 21;
     }
 
-    public boolean isplayerBust(Player player){
-        return Scorer.scoreHand(player) > 21;
-    }
 
     public boolean isDraw(Player player) {
         return Scorer.scoreHand(player) == Scorer.scoreHand(this.dealer);

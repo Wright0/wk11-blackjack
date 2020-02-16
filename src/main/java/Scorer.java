@@ -17,4 +17,7 @@ public class Scorer {
         return score;
     }
 
+    //The ace logic needs to be reworked because in the scenario where the ace is the first
+    // card dealt you might want to switch it to a 1 later.
+
 }

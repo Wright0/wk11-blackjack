@@ -74,19 +74,6 @@ public class GameTest {
     }
 
     @Test
-    public void canReturnFalseIfNotBust(){
-        olivia.receiveCard(ace);
-        assertEquals(false, game.isplayerBust(olivia));
-    }
-
-    @Test
-    public void canReturnTrueIfBust(){
-        olivia.receiveCard(ace);
-        olivia.receiveCard(ace);
-        assertEquals(true, game.isplayerBust(olivia));
-    }
-
-    @Test
     public void canReturnTrueWhenDraw(){
         olivia.receiveCard(ace);
         dealer.receiveCard(ace);

@@ -30,11 +30,12 @@ public class Player {
     }
 
     public boolean getPlayerBustStatus(){
+        this.setBustStatus();
         return this.isBust;
     }
 
-    public void setPlayerBust(){
-        if (Scorer.scoreHand(this) > 21){
+    public void setBustStatus(){
+        if (Scorer.scoreHand(this) > 21) {
             this.isBust = true;
         }
     }

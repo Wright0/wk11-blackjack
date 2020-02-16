@@ -55,7 +55,7 @@ public class Runner {
                 if ("twist".equals(nextMove)){
                     Card activeCard = game.playerTwists(activePlayer);
                     System.out.println(String.format("You got a: %s.", activeCard.getCardName()));
-                    isPlayerBust = game.isplayerBust(activePlayer);
+                    isPlayerBust = activePlayer.getPlayerBustStatus();
                     if (isPlayerBust){
                         System.out.println("Uh oh! Looks like you've bust!");
                     }
@@ -80,7 +80,7 @@ public class Runner {
             Player activePlayer = game.getPlayer(i);
 
             if (game.getPlayer(i).getPlayerBustStatus()){
-                System.out.println(String.format("%s went bust!", game.getPlayer(i)));
+                System.out.println(String.format("%s went bust!", game.getPlayer(i).getName()));
             } else {
                 System.out.println(String.format("%s has %d points.", activePlayer.getName(), Scorer.scoreHand(activePlayer)));
             }
