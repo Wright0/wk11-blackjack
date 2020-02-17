@@ -54,6 +54,8 @@ public class Runner {
                 if ("twist".equals(nextMove)){
                     Card activeCard = game.playerTwists(activePlayer);
                     System.out.println(String.format("You got a: %s.", activeCard.getCardName()));
+                    activePlayer.checkAndSetBustStatus();
+
                     if (activePlayer.getPlayerBustStatus()){
                         System.out.println("Uh oh! Looks like you've bust!");
                     }
