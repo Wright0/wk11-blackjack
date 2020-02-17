@@ -33,7 +33,6 @@ public class Runner {
         for (int i = 0; i < playerCount; i++){
             Player activePlayer = game.getPlayer(i);
             Boolean playerTurnOver = false;
-            Boolean isPlayerBust = false;
 
             System.out.println(String.format("%s, it's your turn.", activePlayer.getName()));
 
@@ -41,7 +40,7 @@ public class Runner {
                 System.out.println(String.format("You have a: %s.", card.getCardName()));
             }
 
-            while(!playerTurnOver && !isPlayerBust){
+            while(!playerTurnOver && !activePlayer.getPlayerBustStatus()){
                 System.out.println(String.format("Your current score is %d. Would you like to twist or stay? Lowercase please.", Scorer.scoreHand(activePlayer)));
                 String nextMove = scanner.next();
 
@@ -55,8 +54,7 @@ public class Runner {
                 if ("twist".equals(nextMove)){
                     Card activeCard = game.playerTwists(activePlayer);
                     System.out.println(String.format("You got a: %s.", activeCard.getCardName()));
-                    isPlayerBust = activePlayer.getPlayerBustStatus();
-                    if (isPlayerBust){
+                    if (activePlayer.getPlayerBustStatus()){
                         System.out.println("Uh oh! Looks like you've bust!");
                     }
                 } else {
@@ -88,7 +86,7 @@ public class Runner {
         if (dealer.getPlayerBustStatus()){
             System.out.println("I went Bust!");
         } else {
-            System.out.println(String.format("I have %d points", Scorer.scoreHand(dealer)));
+            System.out.println(String.format("I have %d points.", Scorer.scoreHand(dealer)));
         }
 
         System.out.println(String.format("The winner is %s! Thanks for playing!", game.returnWinner().getName()));
