@@ -46,7 +46,7 @@ public class Runner {
                 String nextMove = scanner.next();
 
                 while (!"twist".equals(nextMove) && !"stay".equals(nextMove)){
-                    System.out.println("Hmm I think you made a typo. Can you write that again? Twist or stay? Lowercase please!");
+                    System.out.println("Hmm I think you  a typo. Can you write that again? Twist or stay? Lowercase please!");
                     nextMove = scanner.next();
                 }
 
