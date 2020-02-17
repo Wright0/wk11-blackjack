@@ -29,7 +29,7 @@ public class Player {
         return this.hand.size();
     }
 
-    public boolean getPlayerBustStatus(){
+    public boolean isPlayerBust(){
         return this.isBust;
     }
 

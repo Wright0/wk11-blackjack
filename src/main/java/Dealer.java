@@ -5,7 +5,11 @@ public class Dealer extends Player {
     }
 
     public boolean canDealerPlay(){
-        return Scorer.scoreHand(this) < 16;
+        return (!this.isPlayerBust() && this.isDealerScoreUnderOrEqualTo16());
+    }
+
+    private boolean isDealerScoreUnderOrEqualTo16() {
+        return Scorer.scoreHand(this) <= 16;
     }
 
     public Card showFirstCardInHand(){

@@ -4,7 +4,7 @@ public class Scorer {
         int score = 0;
 
         for (Card card : player.getHand()){
-            if (score < 10 && card.getRank() == Rank.ACE){
+            if (score <= 10 && card.getRank() == Rank.ACE){
                 score += 11;
             } else if (score > 10 && card.getRank() == Rank.ACE) {
                 score += 1;

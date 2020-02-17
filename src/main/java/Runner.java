@@ -40,12 +40,12 @@ public class Runner {
                 System.out.println(String.format("You have a: %s.", card.getCardName()));
             }
 
-            while(!playerTurnOver && !activePlayer.getPlayerBustStatus()){
+            while(!playerTurnOver && !activePlayer.isPlayerBust()){
                 System.out.println(String.format("Your current score is %d. Would you like to twist or stay? Lowercase please.", Scorer.scoreHand(activePlayer)));
                 String nextMove = scanner.next();
 
                 while (!"twist".equals(nextMove) && !"stay".equals(nextMove)){
-                    System.out.println("Hmm I think you made a typo. Can you write that again? Would you like to twist or stay? Lowercase please!");
+                    System.out.println("Hmm I think you made a typo. Can you write that again? Would you like to t0wist or stay? Lowercase please!");
                     nextMove = scanner.next();
                 }
 
@@ -56,7 +56,7 @@ public class Runner {
                     System.out.println(String.format("You got a: %s.", activeCard.getCardName()));
                     activePlayer.checkAndSetBustStatus();
 
-                    if (activePlayer.getPlayerBustStatus()){
+                    if (activePlayer.isPlayerBust()){
                         System.out.println("Uh oh! Looks like you've bust!");
                     }
                 } else {
@@ -79,13 +79,13 @@ public class Runner {
         for (int i = 0; i < game.getPlayerCount(); i++){
             Player activePlayer = game.getPlayer(i);
 
-            if (game.getPlayer(i).getPlayerBustStatus()){
+            if (game.getPlayer(i).isPlayerBust()){
                 System.out.println(String.format("%s went bust!", game.getPlayer(i).getName()));
             } else {
                 System.out.println(String.format("%s has %d points.", activePlayer.getName(), Scorer.scoreHand(activePlayer)));
             }
         }
-        if (dealer.getPlayerBustStatus()){
+        if (dealer.isPlayerBust()){
             System.out.println("I went Bust!");
         } else {
             System.out.println(String.format("I have %d points.", Scorer.scoreHand(dealer)));

@@ -51,8 +51,9 @@ public class Game {
     }
 
     public void dealerMoves(){
-        if (dealer.canDealerPlay()){
+        while (dealer.canDealerPlay()){
             playerTwists(this.dealer);
+            dealer.checkAndSetBustStatus();
         }
     }
 
